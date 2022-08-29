@@ -6,7 +6,6 @@ import com.aliyun.polardbx.binlog.error.PolardbxException;
 
 import java.io.IOException;
 
-import static com.aliyun.polardbx.binlog.ConfigKeys.DAEMON_TSO_HEARTBEAT_INTERVAL;
 
 /**
  * Created by ziyang.lb

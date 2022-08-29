@@ -17,7 +17,6 @@
 
 package com.aliyun.polardbx.binlog;
 
-import com.aliyun.polardbx.binlog.domain.MarkInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -236,10 +235,6 @@ public class CommonUtils {
         String name = address.getHostAddress();
         return (name != null && !EMPTY_IP.equals(name) && !LOCALHOST_IP.equals(name) && IP_PATTERN.matcher(name)
             .matches());
-    }
-
-    public static MarkInfo getCommand(String rowLogsQuery) {
-        return new MarkInfo(rowLogsQuery);
     }
 
     public static Date parse(String date, String pattern) throws ParseException {
