@@ -22,7 +22,6 @@ import com.aliyun.polardbx.binlog.canal.core.BinlogEventProcessor;
 import com.aliyun.polardbx.binlog.canal.core.dump.ErosaConnection;
 import com.aliyun.polardbx.binlog.canal.core.dump.MysqlConnection;
 import com.aliyun.polardbx.binlog.canal.core.handle.DefaultBinlogEventHandle;
-import com.aliyun.polardbx.binlog.canal.core.handle.SearchTsoEventHandle;
 import com.aliyun.polardbx.binlog.canal.core.model.AuthenticationInfo;
 import com.aliyun.polardbx.binlog.canal.core.model.BinlogPosition;
 import com.aliyun.polardbx.binlog.canal.exception.ConsumeOSSBinlogEndException;
@@ -123,7 +122,9 @@ public class CanalBootstrap {
             realTso = CommonUtils.getTsoTimestamp(requestTso);
         }
         logger.info("dump mysql with start tso " + realTso);
-        BinlogPosition position = searchPosition(connection, requestTso, realTso);
+//        BinlogPosition position = searchPosition(connection, requestTso, realTso);
+
+        BinlogPosition position = null;
         if (position != null) {
             consume(connection, position, requestTso);
             return;
@@ -161,48 +162,48 @@ public class CanalBootstrap {
         }
     }
 
-    private BinlogPosition searchPosition(ErosaConnection connection, String requestTso, long searchTso)
-        throws Exception {
-        logger.info("search position by tso : " + searchTso);
-        long startCmdTSO = -1;
-        if (StringUtils.isNotBlank(this.startCmdTSO)) {
-            startCmdTSO = CommonUtils.getTsoTimestamp(this.startCmdTSO);
-        }
-        SearchTsoEventHandle searchTsoEventHandle =
-            new SearchTsoEventHandle(authenticationInfo, requestTso, searchTso, startCmdTSO);
-        processor.setHandle(searchTsoEventHandle);
-        connection.connect();
-        BinlogPosition endPosition = connection.findEndPosition(searchTso);
-        String searchFile = endPosition.getFileName();
-        while (true) {
-            searchTsoEventHandle.reset();
-            processor.init(connection.fork(), searchFile, 0, true, mySqlInfo.getServerCharactorSet());
-            long binlogFileSize = connection.binlogFileSize(searchFile);
-            if (binlogFileSize == -1) {
-                //找不到这个文件，直接break
-                break;
-            }
-            logger.info("start search " + searchTso + " in " + searchFile);
-            searchTsoEventHandle.setCurrentFile(searchFile);
-            searchTsoEventHandle
-                .setEndPosition(new BinlogPosition(searchFile, binlogFileSize, -1, -1));
-            processor.start();
-            BinlogPosition startPosition = searchTsoEventHandle.searchResult();
-            topologyContext = searchTsoEventHandle.getTopologyContext();
-            if (startPosition != null) {
-                return startPosition;
-            }
-            searchFile = connection.preFileName(searchFile);
-            if (searchFile == null) {
-                break;
-            }
-        }
-        BinlogPosition startPosition = searchTsoEventHandle.getCommandPosition();
-        if (startPosition != null) {
-            topologyContext = searchTsoEventHandle.getTopologyContext();
-            return startPosition;
-        }
-        return null;
-    }
+//    private BinlogPosition searchPosition(ErosaConnection connection, String requestTso, long searchTso)
+//        throws Exception {
+//        logger.info("search position by tso : " + searchTso);
+//        long startCmdTSO = -1;
+//        if (StringUtils.isNotBlank(this.startCmdTSO)) {
+//            startCmdTSO = CommonUtils.getTsoTimestamp(this.startCmdTSO);
+//        }
+//        SearchTsoEventHandle searchTsoEventHandle =
+//            new SearchTsoEventHandle(authenticationInfo, requestTso, searchTso, startCmdTSO);
+//        processor.setHandle(searchTsoEventHandle);
+//        connection.connect();
+//        BinlogPosition endPosition = connection.findEndPosition(searchTso);
+//        String searchFile = endPosition.getFileName();
+//        while (true) {
+//            searchTsoEventHandle.reset();
+//            processor.init(connection.fork(), searchFile, 0, true, mySqlInfo.getServerCharactorSet());
+//            long binlogFileSize = connection.binlogFileSize(searchFile);
+//            if (binlogFileSize == -1) {
+//                //找不到这个文件，直接break
+//                break;
+//            }
+//            logger.info("start search " + searchTso + " in " + searchFile);
+//            searchTsoEventHandle.setCurrentFile(searchFile);
+//            searchTsoEventHandle
+//                .setEndPosition(new BinlogPosition(searchFile, binlogFileSize, -1, -1));
+//            processor.start();
+//            BinlogPosition startPosition = searchTsoEventHandle.searchResult();
+//            topologyContext = searchTsoEventHandle.getTopologyContext();
+//            if (startPosition != null) {
+//                return startPosition;
+//            }
+//            searchFile = connection.preFileName(searchFile);
+//            if (searchFile == null) {
+//                break;
+//            }
+//        }
+//        BinlogPosition startPosition = searchTsoEventHandle.getCommandPosition();
+//        if (startPosition != null) {
+//            topologyContext = searchTsoEventHandle.getTopologyContext();
+//            return startPosition;
+//        }
+//        return null;
+//    }
 
 }

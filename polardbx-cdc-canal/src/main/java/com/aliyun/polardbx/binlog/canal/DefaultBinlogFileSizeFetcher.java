@@ -1,6 +1,5 @@
 package com.aliyun.polardbx.binlog.canal;
 
-import com.aliyun.polardbx.binlog.DynamicApplicationConfig;
 import com.aliyun.polardbx.binlog.canal.core.dump.ErosaConnection;
 import com.aliyun.polardbx.binlog.canal.core.dump.MysqlConnection;
 import com.aliyun.polardbx.binlog.error.PolardbxException;
@@ -42,8 +41,8 @@ public class DefaultBinlogFileSizeFetcher implements IBinlogFileSizeFetcher {
 
     private void sleep() {
         try {
-            int tsoHeartBeatInterval = DynamicApplicationConfig.getInt(DAEMON_TSO_HEARTBEAT_INTERVAL);
-            Thread.sleep(Math.min(tsoHeartBeatInterval * 5, 2000));
+//            int tsoHeartBeatInterval = DynamicApplicationConfig.getInt(DAEMON_TSO_HEARTBEAT_INTERVAL);
+            Thread.sleep(Math.min(1000 * 5, 2000));
         } catch (InterruptedException e) {
         }
     }

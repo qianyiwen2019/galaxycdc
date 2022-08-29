@@ -10,18 +10,7 @@
 
     <modules>
         <module>polardbx-cdc-common</module>
-        <module>polardbx-cdc-dumper</module>
         <module>polardbx-cdc-canal</module>
-        <module>polardbx-cdc-task</module>
-        <module>polardbx-cdc-daemon</module>
-        <module>polardbx-cdc-storage</module>
-        <module>polardbx-cdc-assemble</module>
-        <module>polardbx-cdc-transfer</module>
-        <module>polardbx-cdc-format</module>
-        <module>polardbx-cdc-protocol</module>
-        <module>polardbx-cdc-meta</module>
-        <module>polardbx-cdc-monitor</module>
-        <module>polardbx-cdc-rpl</module>
     </modules>
 
     <properties>
