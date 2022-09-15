@@ -15,16 +15,24 @@
  *
  */
 
-package com.aliyun.polardbx.binlog.canal.core;
+package com.aliyun.polardbx.rpl.taskmeta;
 
-import com.aliyun.polardbx.binlog.SpringContextBootStrap;
-import org.junit.Before;
+import com.aliyun.polardbx.rpl.common.RplConstants;
+import lombok.Data;
 
-public class OssConnectionTest {
-
-    @Before
-    public void before() {
-        final SpringContextBootStrap appContextBootStrap = new SpringContextBootStrap("spring/spring.xml");
-        appContextBootStrap.boot();
-    }
+/**
+ * @author shicai.xsc 2020/12/1 11:06
+ * @since 5.0.0.0
+ */
+@Data
+public class ApplierConfig {
+    protected int mergeBatchSize = 1000;
+    protected int sendBatchSize = 100;
+    protected int logCommitLevel = RplConstants.LOG_NO_COMMIT;
+    protected boolean enableDdl = true;
+    protected int maxPoolSize = 256;
+    protected int minPoolSize = 64;
+    protected int statisticIntervalSec = 5;
+    protected int applierType = ApplierType.MERGE.getValue();
+    protected HostInfo hostInfo;
 }

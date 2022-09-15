@@ -44,9 +44,9 @@ public class MysqlEventParserTest {
         MysqlEventParser parser = new MysqlEventParser();
         parser.setRds(true);
 
-        startPosition = new BinlogPosition("binlog.000001", 4, 1, 0);
+        startPosition = new BinlogPosition("binlog.000047", 304, 1, 0);
         AuthenticationInfo authInfo = new AuthenticationInfo(
-            new InetSocketAddress("pxc-wl5ahzrivkf5erhkab.public.polarx.rds.aliyuncs.com", 3306), "root", "Qa876615");
+            new InetSocketAddress("127.0.0.1", 3306), "root", "123456");
 
         parser.setSearchFunction(new Sk());
         parser.addFilter(new LogEventFilter() {
