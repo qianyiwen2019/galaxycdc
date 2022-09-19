@@ -17,6 +17,7 @@
 
 package com.aliyun.polardbx.rpl.extractor;
 
+import com.aliyun.polardbx.RplConstants;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSAction;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSEvent;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSQueryLog;
@@ -31,11 +32,10 @@ import com.aliyun.polardbx.binlog.canal.core.BinlogEventSink;
 import com.aliyun.polardbx.binlog.canal.core.model.AuthenticationInfo;
 import com.aliyun.polardbx.binlog.canal.core.model.BinlogPosition;
 import com.aliyun.polardbx.binlog.canal.core.model.MySQLDBMSEvent;
-import com.aliyun.polardbx.rpl.common.RplConstants;
 import com.aliyun.polardbx.rpl.filter.BaseFilter;
-import com.aliyun.polardbx.rpl.pipeline.MessageEvent;
-import com.aliyun.polardbx.rpl.taskmeta.ExtractorConfig;
-import com.aliyun.polardbx.rpl.taskmeta.HostInfo;
+import com.aliyun.polardbx.rpl.pipeline.store.MessageEvent;
+import com.aliyun.polardbx.taskmeta.ExtractorConfig;
+import com.aliyun.polardbx.taskmeta.HostInfo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -275,7 +275,7 @@ public class CanalBinlogExtractor extends BaseExtractor {
                 }
             }
 
-            pipeline.writeRingbuffer(datas);
+            store.accept(datas);
             return true;
         }
     }

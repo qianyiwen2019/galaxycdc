@@ -72,7 +72,7 @@ public class NoTsoMysqlEventParser extends MysqlEventParser {
             }
 
             if (!succeeded) {
-                throw new CanalParseException("consume failed!");
+                throw new CanalParseException("accept failed!");
             }
         });
     }

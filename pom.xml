@@ -12,6 +12,9 @@
         <module>polardbx-cdc-common</module>
         <module>polardbx-cdc-canal</module>
         <module>extractor</module>
+        <module>pipeline</module>
+        <module>task-runner</module>
+        <module>applier</module>
     </modules>
 
     <properties>

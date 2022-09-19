@@ -17,11 +17,11 @@
 
 package com.aliyun.polardbx.rpl.filter;
 
+import com.aliyun.polardbx.RplConstants;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSAction;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DefaultRowChange;
 import com.aliyun.polardbx.rpl.common.CommonUtil;
-import com.aliyun.polardbx.rpl.common.RplConstants;
-import com.aliyun.polardbx.rpl.taskmeta.ReplicateMeta;
+import com.aliyun.polardbx.taskmeta.ReplicateMeta;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 

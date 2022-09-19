@@ -17,8 +17,8 @@
 
 package com.aliyun.polardbx.rpl.filter;
 
+import com.aliyun.polardbx.RplConstants;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSAction;
-import com.aliyun.polardbx.rpl.common.RplConstants;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashSet;

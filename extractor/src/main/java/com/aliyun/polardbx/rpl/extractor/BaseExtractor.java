@@ -17,9 +17,8 @@
 
 package com.aliyun.polardbx.rpl.extractor;
 
-import com.aliyun.polardbx.rpl.pipeline.BasePipeline;
-import com.aliyun.polardbx.rpl.taskmeta.ExtractorConfig;
-
+import com.aliyun.polardbx.rpl.pipeline.store.RingbufferStore;
+import com.aliyun.polardbx.taskmeta.ExtractorConfig;
 import lombok.Data;
 
 /**
@@ -29,7 +28,7 @@ import lombok.Data;
 @Data
 public class BaseExtractor {
 
-    protected BasePipeline pipeline;
+    protected RingbufferStore store;
     protected ExtractorConfig extractorConfig;
     protected boolean running;
 

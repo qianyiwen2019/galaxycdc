@@ -17,6 +17,7 @@
 
 package com.aliyun.polardbx.rpl.common;
 
+import com.aliyun.polardbx.RplConstants;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DBMSEvent;
 import com.aliyun.polardbx.binlog.canal.binlog.dbms.DefaultQueryLog;
 import com.aliyun.polardbx.binlog.canal.core.model.BinlogPosition;

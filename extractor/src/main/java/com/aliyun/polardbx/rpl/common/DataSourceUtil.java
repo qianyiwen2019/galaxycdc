@@ -21,7 +21,11 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.vendor.MySqlExceptionSorter;
 import com.alibaba.druid.pool.vendor.MySqlValidConnectionChecker;
 import com.alibaba.fastjson.JSON;
+import com.aliyun.polardbx.DruidDataSourceWrapper;
 import com.google.common.collect.Maps;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.jdbc.support.JdbcUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,10 +38,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
-
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.jdbc.support.JdbcUtils;
 
 /**
  * @author shicai.xsc 2020/12/1 22:36

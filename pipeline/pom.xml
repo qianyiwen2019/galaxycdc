@@ -9,18 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>extractor</artifactId>
+    <artifactId>pipeline</artifactId>
+
 
     <dependencies>
         <dependency>
             <groupId>com.aliyun.polardbx</groupId>
-            <artifactId>polardbx-cdc-canal</artifactId>
+            <artifactId>polardbx-cdc-common</artifactId>
             <version>5.4.13-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.aliyun.polardbx</groupId>
-            <artifactId>polardbx-cdc-common</artifactId>
+            <artifactId>polardbx-cdc-canal</artifactId>
             <version>5.4.13-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -31,11 +32,28 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.2.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.aliyun.polardbx</groupId>
-            <artifactId>pipeline</artifactId>
+            <artifactId>applier</artifactId>
+            <version>5.4.13-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.polardbx</groupId>
+            <artifactId>applier</artifactId>
             <version>5.4.13-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 </project>
