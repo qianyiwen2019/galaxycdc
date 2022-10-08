@@ -15,13 +15,12 @@
  *
  */
 
-package com.aliyun.polardbx.rpl.common;
+package com.aliyun.polardbx;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.vendor.MySqlExceptionSorter;
 import com.alibaba.druid.pool.vendor.MySqlValidConnectionChecker;
 import com.alibaba.fastjson.JSON;
-import com.aliyun.polardbx.DruidDataSourceWrapper;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

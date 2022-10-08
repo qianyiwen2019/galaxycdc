@@ -28,6 +28,7 @@ import lombok.Data;
 @Data
 public class BaseExtractor {
 
+    protected String extractorName;
     protected RingbufferStore store;
     protected ExtractorConfig extractorConfig;
     protected boolean running;

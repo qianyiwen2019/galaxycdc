@@ -18,6 +18,7 @@
 package com.aliyun.polardbx.rpl.extractor;
 
 import com.alibaba.fastjson.JSON;
+import com.aliyun.polardbx.DataSourceUtil;
 import com.aliyun.polardbx.RplConstants;
 import com.aliyun.polardbx.binlog.canal.binlog.CharsetConversion;
 import com.aliyun.polardbx.binlog.canal.binlog.LogEvent;
@@ -60,7 +61,6 @@ import com.aliyun.polardbx.binlog.canal.core.model.BinlogPosition;
 import com.aliyun.polardbx.binlog.canal.core.model.MySQLDBMSEvent;
 import com.aliyun.polardbx.binlog.canal.exception.CanalParseException;
 import com.aliyun.polardbx.binlog.canal.exception.TableIdNotFoundException;
-import com.aliyun.polardbx.rpl.common.DataSourceUtil;
 import com.aliyun.polardbx.rpl.filter.BaseFilter;
 import com.aliyun.polardbx.taskmeta.HostInfo;
 import com.aliyun.polardbx.taskmeta.HostType;
